@@ -8,7 +8,7 @@ development:
   encoding: utf8
   database: myrorhub
   username: root
-  password: tiger
+  password: 
   host: localhost
   pool: 5
   timeout: 5000

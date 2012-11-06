@@ -22,10 +22,11 @@ class CommentsController < ApplicationController
   # GET /comments/new.json
   def new
 		@article = Article.find(params[:article_id])
+		
         @comment = Comment.find(:all, :conditions => {:article_id => @article.id }).paginate(:page => params[:page], :per_page => 7)
-       @article_user_email = User.find(:all,  :conditions => {:id=> @article.user_id})
-       raise @article_user_email.inspect
-     # @email = @article_user_email.email
+       
+       @article_user_email = User.find(:all, :select => :email, :conditions => {:id=> @article.user_id}).first
+       @email = @article_user_email.email
   end
 
   # GET /comments/1/edit

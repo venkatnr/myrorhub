@@ -2,9 +2,8 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Article</th>
+    <th>C title</th>
+    <th>C description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +11,7 @@
 
 <% @comments.each do |comment| %>
   <tr>
-    <td><%= comment.name %></td>
-    <td><%= comment.description %></td>
-    <td><%= comment.article %></td>
+    <td><%= comment.c_title %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
