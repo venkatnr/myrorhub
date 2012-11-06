@@ -5,7 +5,9 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <script >
+ 
+</head>
+ <script >
 		ddsmoothmenu.init({
 			mainmenuid: "smoothmenu1", //menu DIV id
 			orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
@@ -21,9 +23,9 @@
 			//customtheme: ["#804000", "#482400"],
 			contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
 		})
-	</script>
-</head>
+</script>
 <body>
+	
 <div class="navigation">
 		  <% if user_signed_in? %>
 			<span class = "textcolor"> Signed in as <%= current_user.email %> </span>
