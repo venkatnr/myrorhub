@@ -9,8 +9,8 @@
 <h3><%#= @comment.comment %></h3>
 <h5>is commented by:</h5>
 <h4><font color =#404040 ><%#= @comment.commenter %></font></h4>
-<%= link_to "approved", "http://localhost:3000/comments/approve?cid=#{@comment.id}&approve=1" %>&nbsp;&nbsp;&nbsp;
-<%= link_to "Not approved","http://localhost:3000/comments/approve?cid=#{@comment.id}&approve=0" %>
+<%= link_to "approved", "myrorhub.herokuapp.com/comments/approve?cid=#{@comment.id}&approve=1" %>&nbsp;&nbsp;&nbsp;
+<%= link_to "Not approved","myrorhub.herokuapp.com/comments/approve?cid=#{@comment.id}&approve=0" %>
 </body>
 </html>
 
