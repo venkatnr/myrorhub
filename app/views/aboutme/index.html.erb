@@ -6,10 +6,10 @@
 <td>
 <%if current_user.provider == "facebook"%>
 	<td>
-		<%#= image_tag current_user.image %>
+		<%= image_tag current_user.image %>
 	</td>
 	else
-	<%= image_tag current_user.picture%>
+	<%#= image_tag current_user.picture%>
 <%end%>
 </tr>
 </table>
