@@ -3,32 +3,70 @@ Title : <%=@article.title%><br>
 Description : <%=@article.description%>
 <br>
 <hr>
-<h1>All Comments </h1><hr>
-<% if user_signed_in? %>
-	<%if current_user.email == @email%>
-		<% @comment.each do |allcomments|%>
-			Commenter Name: <%=allcomments.name%><br>
-			Comment Description: <%=allcomments.description%><br><hr>
+<h1>All Comments </h1>
+<div class="background_comment">
+	<% if user_signed_in? %>
+		<%if current_user.email == @email%>
+			<table>
+				<% @comment.each do |allcomments|%>
+						<tr >
+							<td  width="60%" id = "inside_comment" style ="border-bottom: 2px solid #000000;">
+								
+									Commenter Name: <%=allcomments.name%><br>
+									Comment Description: <%=allcomments.description%>
+								
+							</td>
+							<td width ="40%" style ="border-bottom: 2px solid #000000; text-align: right;">
+								
+									 <%= time_ago_in_words(allcomments.created_at)%>
+									
+									 <div class="fb-like" data-send="true" data-width="450" data-show-faces="true" data-font="verdana"></div><div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=111715892321751";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>					</td>
+						</tr >
+				<%end%>
+			</table>
+		<%else%>
+			<% @comment.each do |allcomments|%>
+				<% if allcomments.c_approval_status == "1" %>
+					Commenter Name: <%=allcomments.name%><br>
+					Comment Description: <%=allcomments.description%><br>
+				<% end %>
+			<%end%>
 		<%end%>
 	<%else%>
-		<% @comment.each do |allcomments|%>
-			<% if allcomments.c_approval_status == "1" %>
-				Commenter Name: <%=allcomments.name%><br>
-				Comment Description: <%=allcomments.description%><br><hr>
-			<% end %>
+			<% @comment.each do |allcomment|%>
+				<% if allcomment.c_approval_status.to_i == 1%>
+					Commenter Name: <%=allcomment.name%><br>
+					Comment Description: <%=allcomment.description%><br>
+				<% end %>
+			<%end%>
 		<%end%>
-	<%end%>
-<%else%>
-		<% @comment.each do |allcomment|%>
-			<% if allcomment.c_approval_status.to_i == 1%>
-				Commenter Name: <%=allcomment.name%><br>
-				Comment Description: <%=allcomment.description%><br><hr>
-			<% end %>
-		<%end%>
-	<%end%>
+</div>
 <%= will_paginate @comment %>
 	<%= link_to "Show all Articles", articles_path%>
 <h2>Make Comment</h2>
 
 <%= render 'form' %>
+<style>
+.background_comment
+{
+		background-color: #EDEFF4;
+		border-radius: 5px 5px 5px 5px;
+		max-width: 60%;
+}
+#inside_comment
+{
+#max-width: 77%;
+    padding: 8px 21px 1px;
+}
+#datelocation{background-color: red;}
+#test{float: right;padding: 23px 20px 1px;}
+</style>
+
 
