@@ -54,6 +54,7 @@ class CommentsController < ApplicationController
 	if @comment.save 
 		@mymail = @email
 		UserMailer.comment_approval(@mymail,@comment).deliver
+		flash[:notice] = "Artical owner will approve you are comment then only you are comment will publish... thanks for comment... :) "
 	end
       redirect_to  new_article_comment_path(@article.id )
     end
