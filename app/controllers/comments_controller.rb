@@ -50,13 +50,12 @@ class CommentsController < ApplicationController
 
     end  
     else
-	@comment = @article.comments.create!(params[:comment])
-	if @comment.save 
-		@mymail = @email
-		UserMailer.comment_approval(@mymail,@comment).deliver
-		redirect_to  new_article_comment_path(@article.id )
-	end
-      redirect_to  new_article_comment_path(@article.id )
+		@comment = @article.comments.create!(params[:comment])
+		if @comment.save
+			@mymail = @email
+			UserMailer.comment_approval(@mymail,@comment).deliver
+		end
+      redirect_to new_article_comment_path(@article.id )
     end
   end
 
