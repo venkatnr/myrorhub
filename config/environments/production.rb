@@ -64,6 +64,7 @@ config.action_mailer.smtp_settings = {
 	:authentication => 'plain',
 	:user_name => "redmine.logicmatter",
 	:password => "redminematter",
+	:enable_starttls_auto => true,
 }
 
   # Enable threaded mode
