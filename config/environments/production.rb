@@ -62,8 +62,8 @@ config.action_mailer.smtp_settings = {
 	:port=>587,
 	:domain => "gmail.com",
 	:authentication => :login,
-	:user_name => "redmine.logicmatter",
-	:password => "redminematter",
+	:user_name => "oneguyvenkat007@gmail.com",
+	:password => "nishankararamu",
 }
 
   # Enable threaded mode
