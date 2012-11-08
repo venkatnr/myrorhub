@@ -1,26 +1,39 @@
+<div id ="mainpagediv">
+	<table>
+	<tr>
+		<td>
+			<b>Name: </b><%= current_user.name %>
+		</td>
+		<td>
+			<%if current_user.provider == "facebook"%>
+				<%= image_tag current_user.image %>
+			<%end%>	
+		</td>
+	</tr>
 
-<table>
-<tr>
-<td>
-<b>Name: </b><%= current_user.name %>
-</td>
-
-	<td>
-	<%if current_user.provider == "facebook"%>
-		<%= image_tag current_user.image %>
-	<%end%>	
-	</td>
-
-
-</tr>
-
-<tr>
-<td>
-	<b>Number of time i logins: </b>
-</td>
-<td>
-	<%= User.find(:all, :select => :sign_in_count,  :conditions => {:id => current_user.id}).map(&:sign_in_count).first%><b>
-</td>
-<td></td>
-</tr>
-</table>
+	<tr>
+		<td>
+			<b>Number of time i logins: </b>
+		</td>
+		<td>
+			<%= User.find(:all, :select => :sign_in_count,  :conditions => {:id => current_user.id}).map(&:sign_in_count).first%><b>
+		</td>
+		<td></td>
+	</tr>
+	</table>
+</div>
+<style>
+#mainpagediv {
+ border: 1px solid #999999;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0 -1px 24px #000000;
+    float: left;
+    font-size: 95%;
+    left: 22%;
+    margin: 0;
+    overflow: auto;
+    padding: 10px;
+    position: relative;
+    width: 46%;
+}
+</style>
