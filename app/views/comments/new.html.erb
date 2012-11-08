@@ -1,6 +1,41 @@
 <h1>Article</h1>
 Title : <%=@article.title%><br>
 Description : <%=@article.description%>
+<div id='fb-root'></div>
+	<script src='http://connect.facebook.net/en_US/all.js'></script>
+	<p><a onclick='postToFeed(); return false;'><span id = "sharebutton"></span></a></p>
+
+	<script> 
+	  FB.init({appId: "111715892321751", status: true, cookie: true});
+
+	  function postToFeed() {
+	 
+		// calling the API ...
+		var obj = {
+		  method: 'feed',
+		  link: 'http://localhost:3000/articles/<%=@article.id%>/comments/new/',
+		  picture: 'http://fbrell.com/f8.jpg',
+		  caption: '<%=@article.title%>',
+		  description: '<%=@article.description%>'
+		};
+
+		function callback(response) {
+		  document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+		}
+
+		FB.ui(obj, callback);
+	  }
+	
+	</script>
+	<div class="fb-like" data-send="true" data-width="450" data-show-faces="true" data-font="verdana"></div>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=111715892321751";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>		
 <br>
 <hr>
 <h1>All Comments </h1>
@@ -20,14 +55,8 @@ Description : <%=@article.description%>
 								
 									 <%= time_ago_in_words(allcomments.created_at)%>
 									
-									 <div class="fb-like" data-send="true" data-width="450" data-show-faces="true" data-font="verdana"></div><div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=111715892321751";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>					</td>
+													
+						</td>
 						</tr >
 				<%end%>
 			</table>
@@ -67,6 +96,15 @@ Description : <%=@article.description%>
 }
 #datelocation{background-color: red;}
 #test{float: right;padding: 23px 20px 1px;}
+#sharebutton{background-image: url("/assets/fbshare.png");
+    background-position: 0 center;
+    background-size: 76px auto;
+    border-radius: 5px 5px 5px 5px;
+    float: right;
+    padding: 25px 38px 1px;
+    position: relative;
+    right: 30px;
+    top: -15px;}
 </style>
 
 

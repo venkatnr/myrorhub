@@ -3,11 +3,24 @@
 <tr>
 <td>
 <b>Name: </b><%= current_user.name %>
-<td>
-<%if current_user.provider == "facebook"%>
+</td>
+
 	<td>
+	<%if current_user.provider == "facebook"%>
 		<%= image_tag current_user.image %>
+	<%end%>	
 	</td>
-<%end%>
+
+
+</tr>
+
+<tr>
+<td>
+	<b>Number of time you logins: </b>
+</td>
+<td>
+	<%= User.find(:all, :select => :sign_in_count,  :conditions => {:id => current_user.id}).map(&:sign_in_count).first%><b>
+</td>
+<td></td>
 </tr>
 </table>
